@@ -1,0 +1,14 @@
+.hero{min-height:90vh;display:flex;flex-direction:column;justify-content:center;padding:4rem 2rem 3rem;max-width:860px;margin:0 auto}
+.hero-eyebrow{font-family:var(--mono);font-size:12px;color:var(--accent2);letter-spacing:0.12em;text-transform:uppercase;margin-bottom:1.5rem;display:flex;align-items:center;gap:8px}
+.hero-eyebrow::before{content:'';display:inline-block;width:24px;height:1px;background:var(--accent2)}
+.hero-name{font-family:var(--display);font-size:clamp(2.2rem,5.6vw,3.8rem);font-weight:700;line-height:1.1;letter-spacing:-0.03em;margin-bottom:1rem}
+.hero-name .accent{color:var(--accent)}
+.hero-role{font-family:var(--mono);font-size:clamp(0.9rem,2vw,1.1rem);color:var(--muted);margin-bottom:2rem;min-height:1.6em}
+.hero-desc{font-size:16px;color:var(--muted);max-width:560px;line-height:1.8;margin-bottom:2.5rem}
+.hero-desc strong{color:var(--text);font-weight:500}
+.hero-cta{display:flex;gap:1rem;flex-wrap:wrap}
+.btn{font-family:var(--display);font-size:14px;font-weight:600;padding:10px 24px;border-radius:6px;cursor:pointer;text-decoration:none;transition:all 0.2s;display:inline-flex;align-items:center;gap:8px;border:none}
+.btn-primary{background:var(--accent);color:#fff}
+.btn-primary:hover{background:#5a52ee;transform:translateY(-1px)}
+.btn-ghost{background:transparent;color:var(--text);border:1px solid var(--border)}
+.btn-ghost:hover{border-color:var(--accent);color:var(--accent);transform:translateY(-1px)}
