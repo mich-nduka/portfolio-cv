@@ -136,6 +136,16 @@ export const EXPERIENCE: Experience[] = [
     ],
   },
   {
+    period: '2026 –\nPresent',
+    role: 'Co-Founder (CTO) / Software Developer',
+    company: 'NexaHub Technologies Ltd. · Hybrid',
+    bullets: [
+      'Co-founded NexaHub Technologies as the Chief Technical Officer',
+      'Design, develop, document and oversee all web, mobile and applications projects within the organization',
+      'Provided ongoing maintenance, performance optimisation, and feature expansion',
+    ],
+  },
+  {
     period: 'May 2024 –\nMar 2025',
     role: 'Full-Stack Developer / Instructor',
     company: 'MetaForce Technologies · FCT-Abuja (Contract)',
