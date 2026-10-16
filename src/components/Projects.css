@@ -1,10 +1,24 @@
-.projects-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:1.25rem}
-.project-card{background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:1.5rem;display:flex;flex-direction:column;gap:0.75rem;transition:border-color 0.2s,transform 0.2s;cursor:default}
-.project-card:hover{border-color:var(--accent);transform:translateY(-2px)}
-.project-card.featured{border-color:#1E2A3D;border-left:3px solid var(--accent)}
-.proj-type{font-family:var(--mono);font-size:10px;color:var(--accent2);letter-spacing:0.1em;text-transform:uppercase;display:flex;justify-content:space-between}
-.proj-status{color:var(--muted)}
-.proj-title{font-family:var(--display);font-size:17px;font-weight:600;color:var(--text)}
-.proj-desc{font-size:13.5px;color:var(--muted);line-height:1.7;flex:1}
-.proj-stack{display:flex;flex-wrap:wrap;gap:5px;margin-top:0.25rem}
-.stack-tag{font-size:11px;font-family:var(--mono);background:var(--surface2);color:var(--muted);padding:2px 8px;border-radius:3px}
+.projects-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1rem}
+/* odd count: let the last card span the full row so the grid stays even */
+.project-card:last-child:nth-child(odd){grid-column:1/-1}
+
+.project-card{position:relative;isolation:isolate;overflow:hidden;background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:1.6rem;display:flex;flex-direction:column;gap:.85rem;transition:border-color .25s,transform .25s var(--ease)}
+.project-card::before{content:'';position:absolute;inset:0;z-index:-1;opacity:0;transition:opacity .3s;
+  background:radial-gradient(380px circle at var(--mx,50%) var(--my,0%),var(--accent-soft),transparent 65%)}
+.project-card:hover{border-color:var(--border-strong);transform:translateY(-2px)}
+.project-card:hover::before{opacity:1}
+
+.proj-head{display:flex;align-items:center;gap:10px;font-family:var(--mono);font-size:11.5px;color:var(--subtle);text-transform:uppercase;letter-spacing:.06em}
+.proj-index{color:var(--accent)}
+.proj-type{flex:1}
+.proj-year{text-transform:none;letter-spacing:0}
+.featured .proj-year::before{content:'★ ';color:var(--accent)}
+
+.proj-title{font-size:1.2rem;font-weight:600;letter-spacing:-0.02em;line-height:1.3}
+.proj-desc{font-size:14px;color:var(--muted);line-height:1.7;flex:1;max-width:60ch}
+.proj-stack{list-style:none;display:flex;flex-wrap:wrap;gap:6px;margin-top:.35rem;padding-top:1rem;border-top:1px dashed var(--border)}
+.stack-tag{font-size:11.5px;font-family:var(--mono);color:var(--muted);background:var(--surface2);padding:2px 9px;border-radius:6px}
+
+@media (max-width:760px){
+  .projects-grid{grid-template-columns:1fr}
+}
