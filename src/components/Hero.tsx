@@ -1,19 +1,20 @@
-import { useEffect, useRef, useState } from 'react'
+import { useEffect, useState } from 'react'
 import { ROLES } from '../data'
+import { prefersReducedMotion } from '../hooks'
 import Console from './Console'
 import './Hero.css'
 
-const prefersReduced =
-  typeof window !== 'undefined'
-    ? window.matchMedia('(prefers-reduced-motion: reduce)').matches
-    : false
+const STATS = [
+  { value: '3+', label: 'years shipping' },
+  { value: '30+', label: 'students taught' },
+  { value: 'Abuja', label: 'based in' },
+]
 
 export default function Hero() {
-  const [displayed, setDisplayed] = useState(prefersReduced ? ROLES[0] : '')
-  const roleRef = useRef<HTMLDivElement>(null)
+  const [displayed, setDisplayed] = useState(() => (prefersReducedMotion() ? ROLES[0] : ''))
 
   useEffect(() => {
-    if (prefersReduced) return
+    if (prefersReducedMotion()) return
 
     let ri = 0
     let ci = 0
@@ -52,22 +53,44 @@ export default function Hero() {
   }, [])
 
   return (
-    <div className="hero">
-      <div className="hero-eyebrow">Open to opportunities</div>
-      <h1 className="hero-name">Ikenna <span className="accent">Onuoha.</span></h1>
-      <div className="hero-role" ref={roleRef}>
-        {displayed}<span className="cursor" />
+    <header className="hero" id="top">
+      <div className="hero-bg" aria-hidden="true" />
+      <div className="container hero-grid">
+        <div className="hero-copy">
+          <div className="hero-status">
+            <span className="live-dot" />
+            Available for new opportunities
+          </div>
+          <h1 className="hero-name">
+            Ikenna Onuoha<span className="hero-dot">.</span>
+          </h1>
+          <div className="hero-role" aria-live="off">
+            <span className="hero-prompt">&gt;</span>
+            <span className="sr-only">{ROLES.join(', ')}</span>
+            <span aria-hidden="true">{displayed}<span className="cursor" /></span>
+          </div>
+          <p className="hero-desc">
+            I build <strong>web and mobile products</strong> end to end — from Supabase schemas to React Native
+            screens to deployed APIs. Shipping for businesses and NGOs across Nigeria, with a backend lean and a
+            growing focus on <strong>AI/ML integration and systems engineering</strong>.
+          </p>
+          <div className="hero-cta">
+            <a className="btn btn-primary" href="#projects">
+              View projects <span className="arrow" aria-hidden="true">→</span>
+            </a>
+            <a className="btn btn-ghost" href="#contact">Get in touch</a>
+          </div>
+          <dl className="hero-stats">
+            {STATS.map((s) => (
+              <div key={s.label}>
+                <dt>{s.label}</dt>
+                <dd>{s.value}</dd>
+              </div>
+            ))}
+          </dl>
+        </div>
+        <Console />
       </div>
-      <p className="hero-desc">
-        I build <strong>web and mobile products</strong> end to end — from Supabase schemas to React Native screens
-        to deployed APIs. 3+ years shipping for businesses and NGOs across Nigeria, with a backend lean
-        and a growing focus on <strong>AI/ML integration and systems engineering</strong>.
-      </p>
-      <div className="hero-cta">
-        <a className="btn btn-primary" href="#projects">View projects</a>
-        <a className="btn btn-ghost" href="#contact">Get in touch</a>
-      </div>
-      <Console />
-    </div>
+    </header>
   )
 }

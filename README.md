@@ -31,19 +31,20 @@ npm run dev
 src/
 ├── data.ts              # All portfolio content (skills, projects, experience, etc.)
 ├── components/
-│   ├── Nav.tsx           # Sticky nav with mobile toggle + CV download
-│   ├── Hero.tsx          # Hero with typewriter role cycling
+│   ├── Nav.tsx           # Sticky nav: active-section pill, theme toggle, CV download
+│   ├── Hero.tsx          # Hero with typewriter role cycling + stats
 │   ├── Console.tsx       # Terminal widget
-│   ├── Skills.tsx        # Skills grid
-│   ├── Projects.tsx      # Project cards
+│   ├── Section.tsx       # Shared numbered section header + reveal wrapper
+│   ├── Skills.tsx        # Skills table
+│   ├── Projects.tsx      # Project cards with cursor spotlight
 │   ├── Experience.tsx    # Work history timeline
 │   ├── Education.tsx     # Education & certifications
-│   ├── Contact.tsx       # Contact links
-│   ├── Footer.tsx        # Footer
-│   └── Divider.tsx       # Section divider
+│   ├── Contact.tsx       # Contact links + copy-email
+│   └── Footer.tsx        # Footer with live Abuja time
+├── hooks.ts              # Scroll reveal, active section, theme, clock
 ├── App.tsx               # Root layout
 ├── main.tsx              # Entry point
-└── index.css             # Global styles & design tokens
+└── index.css             # Global styles & design tokens (dark + light)
 ```
 
 To update portfolio content, edit `src/data.ts`.

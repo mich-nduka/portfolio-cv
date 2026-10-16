@@ -1,25 +1,27 @@
 import { SKILLS } from '../data'
+import Section from './Section'
 import './Skills.css'
 
 export default function Skills() {
   return (
-    <section id="skills">
-      <div className="section-label">capabilities</div>
-      <h2 className="section-title">What I work with</h2>
-      <div className="skills-grid">
+    <Section id="skills" index="01" label="capabilities" title="What I work with">
+      <div className="skills-list">
         {SKILLS.map((group) => (
-          <div className="skill-group" key={group.name}>
+          <div className="skill-row" key={group.name}>
             <div className="skill-group-name">{group.name}</div>
-            <div className="skill-tags">
+            <ul className="skill-tags">
               {group.tags.map((tag) => (
-                <span className={`tag${tag.highlight ? ' hi' : ''}`} key={tag.label}>
+                <li className={`tag${tag.highlight ? ' hi' : ''}`} key={tag.label}>
                   {tag.label}
-                </span>
+                </li>
               ))}
-            </div>
+            </ul>
           </div>
         ))}
       </div>
-    </section>
+      <p className="skills-legend">
+        <span className="legend-dot" /> primary stack
+      </p>
+    </Section>
   )
 }
